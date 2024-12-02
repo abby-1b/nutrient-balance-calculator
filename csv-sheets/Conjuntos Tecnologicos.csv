@@ -1,0 +1,15 @@
+﻿Crop,"Nutrients Recommended for 
+Low Soil Test Level 
+(lb/acre)",,,"Nutrients Recommended for 
+High Soil Test Level 
+(lb/acre)",,,Recommendations
+,,,,,,,
+,N,P,K,N,P,K,
+Plantain,"=IF(A4="""","""",VLOOKUP(A4,'CT Data'!Y3:AF58,2,FALSE))","=IF(A4="""","""",VLOOKUP(A4,'CT Data'!Y3:AF58,3,FALSE))","=IF(A4="""","""",VLOOKUP(A4,'CT Data'!Y3:AF58,4,FALSE))","=IF(A4="""","""",VLOOKUP(A4,'CT Data'!Y3:AF58,5,FALSE))","=IF(A4="""","""",VLOOKUP(A4,'CT Data'!Y3:AF58,6,FALSE))","=IF(A4="""","""",VLOOKUP(A4,'CT Data'!Y3:AF58,7,FALSE))","=IF(A4="""","""",VLOOKUP(A4,'CT Data'!Y3:AF47,8))"
+,"=IF(A5="""","""",VLOOKUP(A5,'CT Data'!Y4:AF59,2,FALSE))","=IF(A5="""","""",VLOOKUP(A5,'CT Data'!Y4:AF59,3,FALSE))","=IF(A5="""","""",VLOOKUP(A5,'CT Data'!Y4:AF59,4,FALSE))","=IF(A5="""","""",VLOOKUP(A5,'CT Data'!Y4:AF59,5,FALSE))","=IF(A5="""","""",VLOOKUP(A5,'CT Data'!Y4:AF59,6,FALSE))","=IF(A5="""","""",VLOOKUP(A5,'CT Data'!Y4:AF59,7,FALSE))","=IF(A5="""","""",VLOOKUP(A5,'CT Data'!Y3:AF47,8))"
+,"=IF(A6="""","""",VLOOKUP(A6,'CT Data'!Y5:AF60,2,FALSE))","=IF(A6="""","""",VLOOKUP(A6,'CT Data'!Y5:AF60,3,FALSE))","=IF(A6="""","""",VLOOKUP(A6,'CT Data'!Y5:AF60,4,FALSE))","=IF(A6="""","""",VLOOKUP(A6,'CT Data'!Y5:AF60,5,FALSE))","=IF(A6="""","""",VLOOKUP(A6,'CT Data'!Y5:AF60,6,FALSE))","=IF(A6="""","""",VLOOKUP(A6,'CT Data'!Y5:AF60,7,FALSE))","=IF(A6="""","""",VLOOKUP(A6,'CT Data'!Y3:AF47,8))"
+"Low soil level indicates that the nutrient is probably deficient and that the deficiency will likely limit crop growth;  Nutrient levels are: N total  (%) < 0.1,  P Bray I (ppm) <10, P Bray II (ppm) < 20, P Olsen (ppm) < 12, K (ppm) <78 and Mg (ppm) <180.",,,,,,,
+"Medium soil level indicates that the nutrient is probably adequate and will likely not limit crop growth in a typical growing season. Nutrient levels are: N total  (%) 0.1-0.2, P Bray I (ppm) 10-20, P Bray II (ppm) 20-40, P Olsen (ppm) < 12, K (ppm) <78 and Mg (ppm) <180.",,,,,,,
+"High soil level indicates that the nutrient is more than adequate and will not limit crop growth. Nutrient levels are: N total  (%) > 0.2,  P Bray I (ppm) >20, P Bray II (ppm) >40, P Olsen (ppm) >35, K (ppm) >156 and Mg (ppm) >300 .",,,,,,,
+"Data summarized from “Conjuntos Tecnológicos, University of  Puerto Rico, Agricultural Experiment Station by Agronomist José A. Castro, USDA-NRCS and Dr. David  Sotomayor, College of Agricultural Sciences, UPR, Mayagüez Campus
+",,,,,,,
