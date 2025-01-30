@@ -16,15 +16,23 @@ const OPR_PRECEDENCE = {
 function isValidAddress(str: string): boolean {
   str = str.replace(/\$/g, '');
   if (str.length < 2) return false;
+  let i = 0;
 
   // TODO: multi-letter addresses
 
-  // Check letter
-  const firstCode = str.charCodeAt(0);
-  if (firstCode <= 64 || firstCode >= 91) return false;
+  // Check letters
+  while (true) {
+    const letterCode = str.charCodeAt(i);
+    if (letterCode <= 64 || letterCode >= 91) {
+      if (i > 0) break;
+      else return false;
+    }
+    i++;
+    if (i >= str.length) return false;
+  }
 
   // Check number
-  const numberStr = str.slice(1);
+  const numberStr = str.slice(i);
   try {
     if (numberStr != parseInt(numberStr) + "") return false;
   } catch {
@@ -35,7 +43,7 @@ function isValidAddress(str: string): boolean {
 }
 
 /** Parses multiple nodes until reaching an ending group (or end of source) */
-function parseMultiple(iter: TokenIter, predecence: number): TreeNode[] {
+function parseCommaSeparated(iter: TokenIter, predecence: number): TreeNode[] {
   const out: TreeNode[] = [];
   while (true) {
     if (')]}'.includes(iter.peek())) {
@@ -66,15 +74,17 @@ function parse(iter: TokenIter, predecence: number): TreeNode {
     } else if (iter.peek() == '(') {
       // Function
       iter.consume(); // skip '('
-      const args = parseMultiple(iter, 0);
+      const args = parseCommaSeparated(iter, 0);
       iter.consume(); // skip ')'
 
       // Some functions just refer to constants
       if (firstToken == 'TRUE') { return { type: 'lit_bool', value: true }; }
       else if (firstToken == 'FALSE') { return { type: 'lit_bool', value: false }; }
 
-      return { type: 'fn', name: firstToken, args }
+      return { type: 'fn', name: firstToken, args };
 
+    } else if (firstToken == 'TRUE' || firstToken == 'FALSE') {
+      return { type: 'lit_bool', value: firstToken == 'TRUE' };
     } else if ([ '"', "'" ].includes(firstToken[0])) {
       // String
       return { type: 'lit_str', value: firstToken }
@@ -118,21 +128,26 @@ function parse(iter: TokenIter, predecence: number): TreeNode {
   
         if (left.type == 'lit_num' && right.type == 'lit_num') {
           // Perform operation immediately
-          if      (opr == '+') { left = { type: 'lit_num', value: left.value + right.value }; }
-          else if (opr == '-') { left = { type: 'lit_num', value: left.value - right.value }; }
-          else if (opr == '*') { left = { type: 'lit_num', value: left.value * right.value }; }
-          else if (opr == '/') { left = { type: 'lit_num', value: left.value / right.value }; }
-          else if (opr == '^') { left = { type: 'lit_num', value: left.value ** right.value }; }
-          else if (opr == '=') { left = { type: 'lit_bool', value: left.value == right.value }; }
-          else if (opr == '<') { left = { type: 'lit_bool', value: left.value < right.value }; }
-          else if (opr == '>') { left = { type: 'lit_bool', value: left.value > right.value }; }
+          if      (opr ==  '+') { left = { type: 'lit_num' , value: left.value  + right.value }; }
+          else if (opr ==  '-') { left = { type: 'lit_num' , value: left.value  - right.value }; }
+          else if (opr ==  '*') { left = { type: 'lit_num' , value: left.value  * right.value }; }
+          else if (opr ==  '/') { left = { type: 'lit_num' , value: left.value  / right.value }; }
+          else if (opr ==  '^') { left = { type: 'lit_num' , value: left.value ** right.value }; }
+          else if (opr ==  '=') { left = { type: 'lit_bool', value: left.value == right.value }; }
+          else if (opr ==  '<') { left = { type: 'lit_bool', value: left.value  < right.value }; }
+          else if (opr ==  '>') { left = { type: 'lit_bool', value: left.value  > right.value }; }
           else if (opr == '<=') { left = { type: 'lit_bool', value: left.value <= right.value }; }
           else if (opr == '>=') { left = { type: 'lit_bool', value: left.value >= right.value }; }
           else if (opr == '<>') { left = { type: 'lit_bool', value: left.value != right.value }; }
-          else { throw new Error("Unknown operator " + opr); }
+          else { throw new Error('Unknown operator ' + opr); }
         } else {
           left = { type: 'opr', opr, left, right };
         }
+      } else if (opr == ':') {
+        if (left.type != 'lit_adr' || right.type != 'lit_adr') {
+          throw new Error('Expected two addresses, found ' + JSON.stringify(left) + ' and ' + JSON.stringify(right));
+        }
+        left = { type: 'lit_adr', value: left.value + ':' + right.value };
       } else {
         left = { type: 'opr', opr, left, right };
       }
