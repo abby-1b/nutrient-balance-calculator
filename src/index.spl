@@ -13,12 +13,12 @@ html
         divs(src="" style="display:block;width:100%;height:70%;border:2px solid green;")
         input(type="button" value="English")
       div#tabs
-        input(type="button" value="Input" onclick="changeTab(0)")
-        input(type="button" value="Years" onclick="changeTab(1)")
-        input(type="button" value="Info"  onclick="changeTab(2)")
+        input(type="button" value="Site Assesment" onclick="changeTab(0)")
+        input(type="button" value="Report" onclick="changeTab(1)")
+        input(type="button" value="Info Output"  onclick="change.Tab(2)")
     div#tab-content-holder
       div.tab-content#tab-input
-        text-label(@, text="Compost Type")
+        text-label(@, text="Cropping History")
         select
           option Select...
           option 05-10-10
@@ -103,7 +103,7 @@ html
           option Urea Ammonium Nitrate 32% 
           option Urea Solution 20% 
           option Urea Solution 23% 
-        text-label(@, text="Crop Type")
+        text-label(@, text="Preplant Soil Test")
         select
           option Select...
           option Avocado
@@ -137,15 +137,15 @@ html
           option Tomato
           option Watermelon
           option Yam
-        text-label(@, text="Total Nitrogen (N)")
+        text-label(@, text="Manure Test and Nitrogen Value")
         number-input(@)
-        text-label(@, text="Total Phosphorus (P)")
+        text-label(@, text="Nutrients Inventory")
         number-input(@)
-        text-label(@, text="Total Potassium (K)")
+        text-label(@, text="NCAT")
         number-input(@)
       div.tab-content#tab-years
-        single-year(@ number="1")
-        single-year(@ number="2")
-        single-year(@ number="3")
+        text-label(@, text="Crop Nutrients Need and Soil Data Interpretation")
+        text-label(@, text="Nutrient Budget and Balance")
+        text-label(@, text="Nutrient Rate Estimator to Balance Nutrient Needs")
       div.tab-content#tab-info
-        p to-do!
+        p place holder
