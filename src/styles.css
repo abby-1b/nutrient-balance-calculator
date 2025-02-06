@@ -60,8 +60,11 @@ body, html {
 /* PAGE */
 
 #background {
-  background-color: #11260e;
+  /* background-color: #11260e; */
   /* background-color: #542f1a; */
+  background-image: url("./assets/background.png");
+  background-position: center;
+  background-size: cover;
   position: absolute;
   object-fit: cover;
   width: 100%;

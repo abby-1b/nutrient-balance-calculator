@@ -6,7 +6,7 @@ html
     style(src="./styles.css")
     script(src="./script.ts" async defer)
   body
-    div#background(src="./assets/background.png")
+    div#background
     div#header
       h1 Nutriet Balance Calculator
       div
