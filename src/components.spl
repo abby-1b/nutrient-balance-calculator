@@ -2,6 +2,8 @@
 text-label(@)
   h3 @{text}
 
+text-input(@)
+  input(type="text")
 number-input(@)
   input(type="number")
 

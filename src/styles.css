@@ -6,7 +6,7 @@
   margin-bottom: 4px;
 }
 
-select, .number-input input {
+select, .number-input input, .text-input input {
   width: 100%;
   padding: 4px;
   padding-left: 8px;
@@ -16,7 +16,7 @@ select, .number-input input {
   border: none;
 }
 
-.number-input * {
+.number-input *, .text-input * {
   width: 100%;
 }
 

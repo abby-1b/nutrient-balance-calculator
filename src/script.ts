@@ -1,4 +1,5 @@
 
+
 const tabInput = document.querySelector('#tab-input') as HTMLElement;
 const tabYears = document.querySelector('#tab-years') as HTMLElement;
 const tabInfo  = document.querySelector('#tab-info' ) as HTMLElement;
@@ -9,3 +10,5 @@ function changeTab(id: number) {
   tabYears.style.left = '-' + (id * 100) + 'vw';
   tabInfo .style.left = '-' + (id * 100) + 'vw';
 }
+
+
