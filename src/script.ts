@@ -123,6 +123,12 @@ const tabSiteAssesment: Tab = {
   name: 'Input',
   inner: [
     { label: 'Cropping History', type: 'select', options: COMPOST_OPTIONS },
+    
+    // TODO: make these align side-by-side
+    { label: 'N', type: 'number' },
+    { label: 'P', type: 'number' },
+    { label: 'K', type: 'number' },
+
     { label: 'Preplant Soil Test', type: 'select', options: CROP_OPTIONS },
     { label: 'Manure Test and Nitrogen Value', type: 'number' },
     { label: 'Nutrients Inventory', type: 'number' },
