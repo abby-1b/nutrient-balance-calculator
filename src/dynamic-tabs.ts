@@ -62,10 +62,10 @@ export class Tab<T extends Record<string, any>> {
     const horizElement = document.createElement('div');
     horizElement.className = 'horizontal-container'
     for (let i = 0; i < labels.length; i++) {
-      const label = document.createElement('h3');
-      label.innerText = labels[i];
-      label.className = 'text-label';
-      horizElement.appendChild(label);
+      const labelElement = document.createElement('h3');
+      labelElement.innerText = labels[i];
+      labelElement.className = 'text-label';
+      horizElement.appendChild(labelElement);
       const numberInput = document.createElement('input');
       numberInput.className = 'number-input';
       numberInput.type = 'number';
@@ -95,7 +95,7 @@ export class DynamicTabs<T extends Record<string, Record<string, any>>> {
     this.tabs.set(tabName, tab);
     tab.setName(tabName);
     this.parentElement.appendChild(tab.element);
-    return this;
+    return this as DynamicTabs<T & Record<N, K>>;
   }
 
   public getValue<TabName extends keyof T & string, InputName extends keyof T[TabName] & string>(

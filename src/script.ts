@@ -128,6 +128,7 @@ const tabInput = new Tab<{}>()
 const tabs = new DynamicTabs<{}>(document.body)
   .addTab('Input', tabInput);
 
+tabs.getValue('Input', 'NCAT')
 
 // const tabReport: Tab = {
 //   name: 'Report',
