@@ -1,23 +1,46 @@
 
 /* COMPONENT THINGS */
 
+:root {
+  --border-radius: 100px;
+}
+
 .text-label {
   margin-top: 20px;
   margin-bottom: 4px;
+}
+
+.horizontal-container {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 2px;
+  grid-template-rows: auto auto;
 }
 
 select, .number-input, .text-input {
   width: 100%;
   padding: 4px;
   padding-left: 8px;
-  font-size: 1.2em;
-  border-radius: 100px;
+  font-size: 1.3em;
+  border-radius: var(--border-radius);
   box-sizing: border-box;
   border: none;
 }
 
 .number-input *, .text-input * {
   width: 100%;
+}
+
+.horizontal-container .number-input:nth-child(2) {
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.horizontal-container .number-input {
+  border-radius: 0;
+}
+
+.horizontal-container .number-input:last-child {
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
 
 .single-year {
@@ -60,12 +83,10 @@ body, html {
 /* PAGE */
 
 #background {
-  /* background-color: #11260e; */
-  /* background-color: #542f1a; */
   background-image: url("./assets/background.png");
   background-position: center;
   background-size: cover;
-  position: absolute;
+  position: fixed;
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -77,11 +98,13 @@ body, html {
 #header {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 4fr 1fr;
+  grid-template-rows: 1fr;
   padding: 8px;
 }
 #header h1 {
+  font-size: 2em;
   font-weight: bolder;
+  transition: font-size 1s ease-in-out;
 }
 
 /* Container for the three tabs */
@@ -104,17 +127,11 @@ body, html {
   font-size: 1.1em;
 }
 
-.tab-scroller {
-  display: grid;
-  overflow-x: hidden;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
 .tab-content {
   position: relative;
   box-sizing: border-box;
   padding: 10px;
   width: 100vw;
   left: 0vw;
-  transition: .2s left ease-in-out;
+  transition: .2s left ease-out;
 }
