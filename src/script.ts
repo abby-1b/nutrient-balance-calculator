@@ -119,16 +119,12 @@ const CROP_OPTIONS = [
 
 const tabInput = new Tab<{}>()
   .select('Cropping History', COMPOST_OPTIONS)
-  .horizontalNumbers('NPK', [ 'N', 'P', 'K' ], true)
-  .select('Preplant Soil Test', CROP_OPTIONS)
-  .number('Manure Test and Nitrogen Value')
-  .number('NCAT')
-  .text('Lol');
+  .horizontalNumbers('NPK', [ 'N', 'P', 'K' ], true);
+  
 
 const tabs = new DynamicTabs<{}>(document.body)
   .addTab('Input', tabInput);
 
-tabs.getValue('Input', 'NCAT')
 
 // const tabReport: Tab = {
 //   name: 'Report',
