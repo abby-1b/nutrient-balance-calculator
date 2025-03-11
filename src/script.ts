@@ -125,6 +125,7 @@ const tabInput = new Tab<{}>()
 const tabs = new DynamicTabs<{}>(document.body)
   .addTab('Input', tabInput);
 
+const npk = tabs.getValue('Input', 'NPK')
 
 // const tabReport: Tab = {
 //   name: 'Report',
@@ -139,10 +140,31 @@ const tabs = new DynamicTabs<{}>(document.body)
 //     { label: 'test!', type: 'text' }
 //   ]
 // };
-
-
-
 // const renderedTabs = renderTabs([ tabSiteAssesment, tabReport, tabInfoOutput ]);
 // document.body.appendChild(renderedTabs);
 
+//______________________________________________________________________________________________________
+
+/*This formula is to convert Kilograms of Nutrient Per Metric Ton of Fresh Weight
+  To Particle Per Million (PPM)
+*/
+function TO_PPM( kgt: number){
+  return kgt*1000;
+}
+
+//The kg/t fw for the Phosphosru or Potasium of the chosen crop
+function Mehlich3(CropName: string, kgt_of_Crop:number,PK:number){
+  let Pm3: number = TO_PPM(kgt_of_Crop);
+  return PK * Pm3;
+}
+
+function Olsen(CropName: string, kgt_of_Crop:number, P: number){
+  let P_olsen: number = TO_PPM(kgt_of_Crop);
+  return P_olsen * P;
+}
+
+function Bray1(CropName: string, kgt_of_Crop:number, P: number){
+  let P_Bray: number = TO_PPM(kgt_of_Crop);
+  return P_Bray * P;
+}
 
