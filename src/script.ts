@@ -125,7 +125,9 @@ const tabInput = new Tab<{}>()
 const tabs = new DynamicTabs<{}>(document.body)
   .addTab('Input', tabInput);
 
+window.tabs = tabs;
 const npk = tabs.getValue('Input', 'NPK')
+
 
 // const tabReport: Tab = {
 //   name: 'Report',
