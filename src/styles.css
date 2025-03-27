@@ -6,8 +6,8 @@
 }
 
 .text-label {
-  margin-top: 20px;
-  margin-bottom: 4px;
+  margin-top: 4px;
+  margin-bottom: 0px;
 }
 
 .horizontal-container {
@@ -17,10 +17,11 @@
   grid-template-rows: auto auto;
 }
 
-select, .number-input, .text-input {
+.select-input, .number-input, .text-input {
   width: 100%;
   padding: 4px;
   padding-left: 8px;
+  margin-bottom: 16px;
   font-size: 1.3em;
   border-radius: var(--border-radius);
   box-sizing: border-box;
@@ -80,6 +81,12 @@ body, html {
   color: white;
 }
 
+#header, .tab-content {
+  padding-left: max(10px, calc(50vw - 800px / 2));
+  padding-right: max(10px, calc(50vw - 800px / 2));
+  box-sizing: border-box;
+}
+
 /* PAGE */
 
 #background {
@@ -99,7 +106,7 @@ body, html {
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr;
-  padding: 8px;
+  padding-top: 8px;
 }
 #header h1 {
   font-size: 2em;
@@ -130,7 +137,6 @@ body, html {
 .tab-content {
   position: relative;
   box-sizing: border-box;
-  padding: 10px;
   width: 100vw;
   left: 0vw;
   transition: .2s left ease-out;
