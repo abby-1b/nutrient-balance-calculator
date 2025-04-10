@@ -33,7 +33,7 @@ export class Tab<T extends Record<string, any>> {
     const textInput = document.createElement('input');
     textInput.className = 'text-input';
     textInput.type = 'text';
-    textInput.onkeydown = () => {
+    textInput.onkeyup = () => {
       this.inputs.set(
         label,
         textInput.value.length == 0 ? undefined : textInput.value
@@ -49,7 +49,7 @@ export class Tab<T extends Record<string, any>> {
     const numberInput = document.createElement('input');
     numberInput.className = 'number-input';
     numberInput.type = 'number';
-    numberInput.onkeydown = () => {
+    numberInput.onkeyup = () => {
       this.inputs.set(
         label,
         numberInput.value.length == 0 ? undefined : parseFloat(numberInput.value)
@@ -99,7 +99,7 @@ export class Tab<T extends Record<string, any>> {
       const numberInput = document.createElement('input');
       numberInput.className = 'number-input';
       numberInput.type = 'number';
-      numberInput.onkeydown = () => {
+      numberInput.onkeyup = () => {
         this.inputs.get(label)[i] = numberInput.value.length == 0
           ? 0 : parseFloat(numberInput.value);
         this.inputWasChanged();
