@@ -128,6 +128,18 @@ const enum RangeValue {
   MEDIUM,
   HIGH
 }
+const SOIL_TEST_RANGES = {
+  'P Mehlich': [ 14, 32 ],
+  'P Bray I': [ 12, 22 ],
+  'P Olsen ': [ 8 , 16 ],
+  'Ca': [ 600 , 1200 ],
+  'Fe': [ 2.5 , 4.5 ],
+  'Mn': [ 1.0 , 1.0 ],
+  'Zn': [ 0.5 , 1.0 ],
+  'Cu': [ 0.2 , 0.2 ],
+  'Mg': [ 182 , 304 ],
+  'K' : [ 78 , 156 ]
+};
 
 const tabInput = new Tab<{}>()
   // .select('Cropping History', COMPOST_OPTIONS)
